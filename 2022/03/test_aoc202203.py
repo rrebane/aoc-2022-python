@@ -25,12 +25,12 @@ def example2():
 def test_parse_example1(example1):
     """Test that input is parsed properly."""
     assert example1 == [
-        'vJrwpWtwJgWrhcsFMMfFFhFp',
-        'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
-        'PmmdzqPrVvPwwTWBwg',
-        'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
-        'ttgJtRGJQctTZtZT',
-        'CrZsJsPPZsGzwwsLwLmpwMDw'
+        "vJrwpWtwJgWrhcsFMMfFFhFp",
+        "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+        "PmmdzqPrVvPwwTWBwg",
+        "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+        "ttgJtRGJQctTZtZT",
+        "CrZsJsPPZsGzwwsLwLmpwMDw",
     ]
 
 

@@ -11,7 +11,8 @@ input_grammar = Grammar(
     input = elf+
     elf = (number "\n"?)+ "\n"?
     number = ~"[0-9]+"
-    """)
+    """
+)
 
 
 class InputVisitor(NodeVisitor):
@@ -49,6 +50,7 @@ def part1(data):
 def part2(data):
     """Solve part 2."""
     return sum(sorted([sum(items) for items in data])[-3:])
+
 
 def solve(puzzle_input):
     """Solve the puzzle for the given input."""

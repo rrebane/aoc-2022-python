@@ -31,7 +31,8 @@ def parse_data(puzzle_input):
         pair = section "," section "\n"?
         section = number "-" number
         number = ~r"[1-9][0-9]*"
-        """)
+        """
+    )
 
     parsed_input = input_grammar.parse(puzzle_input)
     typed_input = InputVisitor().visit(parsed_input)

@@ -22,7 +22,8 @@ def parse_data(puzzle_input):
         r"""
         input = rucksack+
         rucksack = ~r"[a-zA-Z]+" "\n"?
-        """)
+        """
+    )
 
     parsed_input = input_grammar.parse(puzzle_input)
     transformed_input = InputVisitor().visit(parsed_input)
@@ -40,8 +41,8 @@ def item_priority(item):
 def rucksack_to_compartments(rucksack):
     num_items = len(rucksack)
 
-    compartment1 = set(rucksack[0:num_items // 2])
-    compartment2 = set(rucksack[num_items // 2:num_items])
+    compartment1 = set(rucksack[0 : num_items // 2])
+    compartment2 = set(rucksack[num_items // 2 : num_items])
 
     return (compartment1, compartment2)
 

@@ -36,7 +36,8 @@ def parse_data(puzzle_input):
         rock = "A" / "X"
         paper = "B" / "Y"
         scissors = "C" / "Z"
-        """)
+        """
+    )
 
     parsed_input = input_grammar.parse(puzzle_input)
     typed_input = InputVisitor().visit(parsed_input)
