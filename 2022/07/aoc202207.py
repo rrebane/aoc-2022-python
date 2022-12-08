@@ -4,9 +4,7 @@
 import pathlib
 import sys
 
-from dataclasses import dataclass
 from parsimonious.grammar import Grammar, NodeVisitor
-from typing import List, Union
 
 
 class InputVisitor(NodeVisitor):
