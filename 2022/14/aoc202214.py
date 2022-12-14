@@ -1,23 +1,24 @@
 """AoC 14, 2022."""
 
-import math
-import numpy as np
 import pathlib
 import sys
+
+import math
+import numpy as np
 
 from parsimonious.grammar import Grammar, NodeVisitor
 
 
 class InputVisitor(NodeVisitor):
-    def visit_path(self, node, visited_children):
+    def visit_path(self, _node, visited_children):
         coordinates, _ = visited_children
         return coordinates
 
-    def visit_coordinate(self, node, visited_children):
+    def visit_coordinate(self, _node, visited_children):
         x, _, y, _ = visited_children
         return (x, y)
 
-    def visit_integer(self, node, visited_children):
+    def visit_integer(self, node, _visited_children):
         return int(node.text)
 
     def generic_visit(self, node, visited_children):
@@ -25,7 +26,6 @@ class InputVisitor(NodeVisitor):
 
 
 def parse_data(puzzle_input):
-    """Parse input."""
     input_grammar = Grammar(
         r"""
         input = path+
@@ -47,8 +47,8 @@ def coorinate_bounds(data):
     max_x = -math.inf
     max_y = -math.inf
 
-    for path in data:
-        for x, y in path:
+    for coordinates in data:
+        for x, y in coordinates:
             if x < min_x:
                 min_x = x
             if x > max_x:
@@ -64,10 +64,10 @@ def coorinate_bounds(data):
 def input_to_grid(data, shape=(200, 1000)):
     grid = np.zeros(shape, dtype=np.int8)
 
-    for path in data:
+    for rock_path in data:
         prev_coordinate = None
 
-        for coordinate in path:
+        for coordinate in rock_path:
             if prev_coordinate:
                 plot_line(grid, prev_coordinate, coordinate)
 
