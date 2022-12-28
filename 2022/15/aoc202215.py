@@ -176,7 +176,9 @@ def circle_intersections(c1, c2):
             if c1_edge_a == c2_edge_a:
                 continue
 
-            intersection = diag_line_intersection(c1_edge_a, c1_edge_b, c2_edge_a, c2_edge_b)
+            intersection = diag_line_intersection(
+                c1_edge_a, c1_edge_b, c2_edge_a, c2_edge_b
+            )
 
             c1_to_i_dist = location_to_location_distance(c1_loc, intersection)
             c2_to_i_dist = location_to_location_distance(c2_loc, intersection)

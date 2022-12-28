@@ -90,7 +90,9 @@ def eval_monkey(monkeys, root_name):
                 if not left in evaluated or not right in evaluated:
                     continue
 
-                evaluated[current_name] = operation(operand, evaluated[left], evaluated[right])
+                evaluated[current_name] = operation(
+                    operand, evaluated[left], evaluated[right]
+                )
 
         queue.pop()
 

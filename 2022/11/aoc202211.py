@@ -98,7 +98,11 @@ def input_to_monkeys(data):
         test_div, if_true, if_false = test
         monkeys.append(
             Monkey(
-                np.array(items), operation_to_func(operation), test_div, if_true, if_false
+                np.array(items),
+                operation_to_func(operation),
+                test_div,
+                if_true,
+                if_false,
             )
         )
 

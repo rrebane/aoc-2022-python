@@ -107,7 +107,7 @@ def find_paths(
             visited,
             acc_pressure + rates[dest] * (n - dist - 1),
             acc_path + [dest],
-            results
+            results,
         )
 
         visited.remove(dest)

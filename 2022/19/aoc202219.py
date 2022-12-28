@@ -70,7 +70,10 @@ def t_until_next(costs, robots, resources):
 
         result.append(
             np.array(
-                [int(np.ceil(a / b)) if b > 0 else np.inf for a, b in zip(missing_resources[mask], robots[mask])]
+                [
+                    int(np.ceil(a / b)) if b > 0 else np.inf
+                    for a, b in zip(missing_resources[mask], robots[mask])
+                ]
             ).max()
         )
 
@@ -132,7 +135,7 @@ def simulate_blueprint(
         if t_until_resource == np.inf:
             continue
 
-        build_time = (int(math.ceil(t_until_resource)) + 1)
+        build_time = int(math.ceil(t_until_resource)) + 1
 
         if time - build_time < 0:
             continue
@@ -143,7 +146,7 @@ def simulate_blueprint(
             costs,
             robots + new_robot,
             resources - costs[i] + robots * build_time,
-            time - build_time
+            time - build_time,
         )
 
         if upper_bounds[3] < max_geodes:

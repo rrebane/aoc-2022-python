@@ -9,6 +9,7 @@ import numpy as np
 
 from parsimonious.grammar import Grammar, NodeVisitor
 
+
 class Dir(Enum):
     RIGHT = 0
     DOWN = 1
@@ -107,19 +108,19 @@ def next_pos_in_direction(grid, pos, direction):
     match direction:
         case Dir.RIGHT:
             if (x + 1) >= grid.shape[1] or grid[y, x + 1] == 0:
-                return (np.argmax(grid[y,:] > 0), y)
+                return (np.argmax(grid[y, :] > 0), y)
             return (x + 1, y)
         case Dir.DOWN:
             if (y + 1) >= grid.shape[0] or grid[y + 1, x] == 0:
-                return (x, np.argmax(grid[:,x] > 0))
+                return (x, np.argmax(grid[:, x] > 0))
             return (x, y + 1)
         case Dir.LEFT:
             if (x - 1) < 0 or grid[y, x - 1] == 0:
-                return (grid.shape[1] - 1 - np.argmax(grid[y,:][::-1] > 0), y)
+                return (grid.shape[1] - 1 - np.argmax(grid[y, :][::-1] > 0), y)
             return (x - 1, y)
         case Dir.UP:
             if (y - 1) < 0 or grid[y - 1, x] == 0:
-                return (x, grid.shape[0] - 1 - np.argmax(grid[:,x][::-1] > 0))
+                return (x, grid.shape[0] - 1 - np.argmax(grid[:, x][::-1] > 0))
             return (x, y - 1)
         case _:
             assert False
@@ -157,7 +158,7 @@ def part1(data):
     grid = input_to_grid(data[0])
     path = input_to_path(data[1])
 
-    pos = (np.argmax(grid[0,:] == 1), 0)
+    pos = (np.argmax(grid[0, :] == 1), 0)
     direction = Dir.RIGHT
 
     for instruction in path:
@@ -320,7 +321,9 @@ def next_cube_pos_in_direction(grid, cube_map, pos, direction):
     if not (b_min_x <= next_x < b_max_x and b_min_y <= next_y < b_max_y):
         next_face, next_direction = face_to_face[face][direction]
         dist = edge_pos_to_corner_distance(cube_map, face, direction, pos)
-        next_pos = corner_distance_to_edge_pos(cube_map, next_face, next_direction, dist)
+        next_pos = corner_distance_to_edge_pos(
+            cube_map, next_face, next_direction, dist
+        )
         return (next_pos, next_direction)
 
     return ((next_x, next_y), direction)
@@ -328,7 +331,9 @@ def next_cube_pos_in_direction(grid, cube_map, pos, direction):
 
 def move_cube(grid, cube_map, pos, direction, steps):
     for _ in range(steps):
-        ((next_x, next_y), next_direction) = next_cube_pos_in_direction(grid, cube_map, pos, direction)
+        ((next_x, next_y), next_direction) = next_cube_pos_in_direction(
+            grid, cube_map, pos, direction
+        )
 
         match grid[next_y, next_x]:
             case 1:
@@ -347,7 +352,7 @@ def part2(data):
     path = input_to_path(data[1])
     cube_map = grid_to_cube(grid)
 
-    pos = (np.argmax(grid[0,:] == 1), 0)
+    pos = (np.argmax(grid[0, :] == 1), 0)
     direction = Dir.RIGHT
 
     for instruction in path:

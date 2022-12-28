@@ -21,11 +21,11 @@ def mix(enc, perm):
         tmp = perm[idx]
 
         if new_idx > idx:
-            perm[idx:new_idx] = perm[idx+1:new_idx+1]
+            perm[idx:new_idx] = perm[idx + 1 : new_idx + 1]
             perm[new_idx] = tmp
         elif new_idx + 1 < idx:
-            perm[new_idx+2:idx+1] = perm[new_idx+1:idx]
-            perm[new_idx+1] = tmp
+            perm[new_idx + 2 : idx + 1] = perm[new_idx + 1 : idx]
+            perm[new_idx + 1] = tmp
 
     return perm.copy()
 

@@ -1,6 +1,7 @@
 import cProfile, pstats, io
 from pstats import SortKey
 
+
 def profile_func(func):
     pr = cProfile.Profile()
     pr.enable()
